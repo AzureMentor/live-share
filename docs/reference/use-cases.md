@@ -5,8 +5,6 @@ ms.custom:
 ms.date: 05/21/2018
 ms.reviewer: ""
 ms.suite: ""
-ms.technology: 
-  - "liveshare"
 ms.topic: "reference"
 author: "lostintangent"
 ms.author: "joncart"
@@ -27,20 +25,20 @@ The primary goal of Visual Studio Live Share is to enable developers to collabor
 
 This document highlights some use cases that Visual Studio Live Share is already being used for, and describes how well we currently support them, and ways we plan to optimize them further  (based on feedback!). If you're using Live Share for something that isn't already covered below, or you think we can do better to support a specific use case, please [let us know](https://github.com/MicrosoftDocs/live-share/issues/new).
 
-* [Quick Assistance](#quick-assistance)
-    * [Office Hours](#office-hours)
-* [Pair Programming](#pair-programming)
-    * [Mob Programming](#mob-programming)
-    * [Coding Competitions / Hack-A-Thons](#coding-competitions--hack-a-thons)
-    * [School Group Projects](#school-group-projects)
-    * [Developer Streaming](#developer-streaming)
-    * [Prototyping / Project Inception](#prototyping--project-inception)
-* [Interactive Education](#interactive-education)
-    * [Peer Mentoring / Onboarding](#peer-mentoring--onboarding)
-    * [Team Brown Bags](#team-brown-bags)
-    * [Classroom Lectures](#classroom-lectures)
-* [Code Reviews](#code-reviews)
-* [Technical Interviews](#technical-interviews)
+- [Quick Assistance](#quick-assistance)
+    - [Office Hours](#office-hours)
+- [Pair Programming](#pair-programming)
+    - [Mob Programming](#mob-programming)
+    - [Coding Competitions / Hack-A-Thons](#coding-competitions--hack-a-thons)
+    - [School Group Projects](#school-group-projects)
+    - [Developer Streaming](#developer-streaming)
+    - [Prototyping / Project Inception](#prototyping--project-inception)
+- [Interactive Education](#interactive-education)
+    - [Peer Mentoring / Onboarding](#peer-mentoring--onboarding)
+    - [Team Brown Bags](#team-brown-bags)
+    - [Classroom Lectures](#classroom-lectures)
+- [Code Reviews](#code-reviews)
+- [Technical Interviews](#technical-interviews)
 
 ## Quick assistance
 
@@ -68,21 +66,23 @@ One of the most commonly used scenarios for Visual Studio Live Share is "pair pr
 
 Live Share was designed to be agnostic to all of the aforementioned concerns, and instead, strives to support pair programming that is completely "opportunistic" and catered to your situation. That said, unlike two developers sharing a single keyboard and screen, Live Share enables a form of pair programming that allows developers to work on a shared goal, without removing their individual autonomy or environment preferences. You can work independently, or together, allowing each participant to bring their own thought process to the collaboration.
 
-To further support pair programming, and allow each "guest" to perform commonly-required actions, we have work on our roadmap to continue increasing the context and capabilities that are shared in a Live Share session: tasks ([#40](https://github.com/MicrosoftDocs/live-share/issues/40)), build output ([#48](https://github.com/MicrosoftDocs/live-share/issues/48)), guest-driven debugging ([#32](https://github.com/MicrosoftDocs/live-share/issues/32)), and more. Let us know which of these experiences are important to you!
-
 To break this use case down even further, the following items represent forms of pair programming that we've observed folks using Live Share for:
 
 ### Mob Programming
 
-[Mob programming](https://en.wikipedia.org/wiki/Mob_programming) (or swarm programming) is essentially pair programming, but with more than two people. Therefore, all of the benefits of Live Share for pair programming apply equally as well. Additionally, some teams do "swarming" on an as-needed basis (e.g. the team rallying around a firedrill) as opposed to full-time.
+[Mob programming](https://en.wikipedia.org/wiki/Mob_programming) (or swarm programming) is essentially pair programming, but with more than two people. Therefore, all of the benefits of Live Share for pair programming apply equally as well. Additionally, some teams do "swarming" on an as-needed basis (e.g. the team rallying around a fire drill) as opposed to full-time.
 
-Currently, Live Share supports up to five guests within a session, which may or may not accommodate your team size. However, this is something we plan to increase (for various use cases), and are looking for feedback on ([Vote 👍 Here](https://github.com/MicrosoftDocs/live-share/issues/229))
+Currently, Live Share supports up to 30 guests within a session.
+> [!TIP]
+> To enable 30 guests in a session:
+> - **VS Code:** add  "liveshare.increasedGuestLimit":"true" to settings.json
+> - **VS:** Set Tools > Options > Live Share > Increased guest limit to "True" 
 
 ### Coding Competitions / Hack-A-Thons
 
 Coding competitions and hack-a-thons are effectively short-term, single-task variations of mob programming. The members of the team, and their current role, are also potentially dynamic. Since this use case is typically also time-sensitive, the ability to collaborate in real-time without needing to adopt an entirely new tool, and the ability to work together, without being restricted to a single screen or keyboard, can go a log way in increasing velocity.
 
-Since the participants in this environment might not always be fully "trusted", we've heard requests to allow removing (and blocking) a guest from a session at any time, which is something that we plan on enabling ([#398](https://github.com/MicrosoftDocs/live-share/issues/398)), and supports the goal of providing "hosts" with complete control over their environment.
+Since the participants in this environment might not always be fully "trusted", you can remove (and block) a guest from a session at any time. This provides "hosts" with complete control over their environment.
 
 ### School Group Projects
 
@@ -112,15 +112,16 @@ Team brown bags are effectively like peer mentoring, but presented to an entire 
 
 When instructors are teaching a lesson, they can use Live Share to share their project with students, instead of simply presenting their screen. This allows the entire class to follow along with the teacher, while being able to interact with the project on their own. Additionally, the teacher can ask individual students to assist in solving a particular portion of the lesson (e.g. "Which method should we call here?"), which can help in the social aspects of the class, without requiring students to walk up to the front of the room, or even be physically present in the same room (e.g. online courses).
 
-To aid in classroom settings, Live Share enables sharing in read-only mode. Instructors can use read-only mode to enable them to share their projects with students without having to worry about unnecessary or accidental edits being made. 
+To aid in classroom settings, Live Share enables sharing in read-only mode. Instructors can use read-only mode to enable them to share their projects with students without having to worry about unnecessary or accidental edits being made.
 
-Additionally, Live Share has experimental support to enable up to 30 guests joining into a collaboration session. This way, instructors can have their whole class join into a session and view code together. 
+Additionally, Live Share has support to enable up to 30 guests joining into a collaboration session. This way, instructors can have their whole class join into a session and view code together.
 
-To enable this experimental feature:
-- **VS Code:** Add "liveshare.features":"experimental" to settings.json.
-- **VS:** Set Tools > Options > Live Share > Features to "Experimental"
+To enable this feature:
 
-To fully optimize Live Share for this scenario, we need to further increase the current guest limit ([#229](https://github.com/MicrosoftDocs/live-share/issues/229)), and simplify the way that sessions are initiated ([#422](https://github.com/MicrosoftDocs/live-share/issues/422)).
+- **VS Code:** Add "liveshare.increasedGuestLimit":"true" to settings.json.
+- **VS:** Set Tools > Options > Live Share > Increased guest limit to "True"
+
+To fully optimize Live Share for this scenario, we need to simplify the way that sessions are initiated ([#422](https://github.com/MicrosoftDocs/live-share/issues/422)).
 
 ## Code Reviews
 
@@ -140,10 +141,10 @@ Additionally, real-world development is more than simply writing code. Because L
 
 ## See also
 
-* [Language and platform support](platform-support.md)
-* [Connectivity requirements for Live Share](connectivity.md)
-* [Security features of Live Share](security.md)
-* [All major bugs, feature requests, and limitations](https://aka.ms/vsls-issues)
-* [All feature requests and limitations](https://aka.ms/vsls-feature-requests)
+- [Language and platform support](platform-support.md)
+- [Connectivity requirements for Live Share](connectivity.md)
+- [Security features of Live Share](security.md)
+- [All major bugs, feature requests, and limitations](https://aka.ms/vsls-issues)
+- [All feature requests and limitations](https://aka.ms/vsls-feature-requests)
 
 Having problems? See [troubleshooting](../troubleshooting.md) or [provide feedback](../support.md).
